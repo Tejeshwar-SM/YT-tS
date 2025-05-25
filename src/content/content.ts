@@ -22,7 +22,7 @@ function initialize(): void {
     console.log('YouTube Transcript Summarizer: YouTube video page detected');
     setTimeout(() => {
       console.log('YouTube Transcript Summarizer: Initializing UI and transcript extraction...');
-      createSummarizeButton(); // Call this first
+      createSummarizeButton();
       createTranscriptSidebar();
       extractTranscript().then((success) => {
           console.log(`YouTube Transcript Summarizer: Initial transcript extraction attempt finished. Success: ${success}`);
@@ -34,13 +34,13 @@ function initialize(): void {
       });
       isInitialized = true;
       console.log('YouTube Transcript Summarizer: Initialization complete flag set.');
-    }, 3500); // Slightly increased timeout for UI elements to settle
+    }, 3500);
   } else {
     console.log('YouTube Transcript Summarizer: Not a YouTube watch page.');
   }
 }
 
-// REVISED createSummarizeButton
+//createSummarizeButton
 function createSummarizeButton(): void {
   console.log('YouTube Transcript Summarizer: createSummarizeButton called.');
   const existingButton = document.querySelector<HTMLButtonElement>('#yt-transcript-summarize-btn');
@@ -49,16 +49,16 @@ function createSummarizeButton(): void {
     existingButton.remove();
   }
 
-  // List of potential selectors for the actions container, from most specific/modern to more general
+  
   const potentialContainersSelectors: string[] = [
-    'ytd-video-primary-info-renderer div#actions-inner div#menu.ytd-video-primary-info-renderer', // Next to the ... menu in primary actions
-    'ytd-video-primary-info-renderer div#actions-inner', // Primary actions row
-    'ytd-watch-metadata div#actions.ytd-watch-metadata', // Actions row below metadata (newer UIs)
-    'ytd-video-secondary-info-renderer div#actions', // Actions below description (older UIs)
-    '#meta-contents #subscribe-button', // Near subscribe button as a last resort if others fail
-    '#info-contents #menu > ytd-menu-renderer', // Older layout for menu
-    '#actions #actions-inner', // Generic actions container
-    '#menu-container #menu' // Fallback menu container
+    'ytd-video-primary-info-renderer div#actions-inner div#menu.ytd-video-primary-info-renderer',
+    'ytd-video-primary-info-renderer div#actions-inner',
+    'ytd-watch-metadata div#actions.ytd-watch-metadata',
+    'ytd-video-secondary-info-renderer div#actions',
+    '#meta-contents #subscribe-button',
+    '#info-contents #menu > ytd-menu-renderer',
+    '#actions #actions-inner',
+    '#menu-container #menu'
   ];
 
   let actionsContainer: HTMLElement | null = null;
@@ -68,27 +68,27 @@ function createSummarizeButton(): void {
     const container = document.querySelector<HTMLElement>(selector);
     if (container) {
       console.log(`YouTube Transcript Summarizer: Found potential actions container with selector: ${selector}`, container);
-      // Determine if this selector points to a menu itself or its parent
+      
       if (selector.includes('#menu.ytd-video-primary-info-renderer') || selector.includes('#menu > ytd-menu-renderer')) {
         actionsContainer = container.parentElement instanceof HTMLElement ? container.parentElement : container;
-        insertionReferenceNode = container; // Insert before the menu
+        insertionReferenceNode = container;
       } else if (selector.includes('#subscribe-button')) {
         actionsContainer = container.parentElement instanceof HTMLElement ? container.parentElement : container;
-        insertionReferenceNode = container.nextSibling; // Insert after subscribe button
+        insertionReferenceNode = container.nextSibling;
       }
       else {
         actionsContainer = container;
       }
-      break; // Found a container, stop searching
+      break;
     }
   }
 
   if (actionsContainer) {
     console.log('YouTube Transcript Summarizer: Using actions container:', actionsContainer);
-    const summarizeButton = document.createElement('button'); // No need for 'as HTMLButtonElement' here, createElement('button') is specific
+    const summarizeButton = document.createElement('button'); 
     summarizeButton.id = 'yt-transcript-summarize-btn';
     summarizeButton.textContent = 'Summarize';
-    summarizeButton.className = 'yt-summarize-button'; // Make sure this class is defined in your content.css
+    summarizeButton.className = 'yt-summarize-button'; 
     summarizeButton.addEventListener('click', handleSummarizeClick);
 
     if (insertionReferenceNode && insertionReferenceNode.parentNode === actionsContainer) {
@@ -101,11 +101,11 @@ function createSummarizeButton(): void {
     console.log('YouTube Transcript Summarizer: Summarize button created and injected.');
   } else {
     console.warn('YouTube Transcript Summarizer: Could not find a suitable actions container for summarize button after trying all selectors. Will retry...');
-    // Retry mechanism with a check to avoid infinite loops if page structure is truly different
+    
     const retryCount = parseInt(document.body.dataset.summarizeButtonRetry || '0');
-    if (retryCount < 5) { // Limit retries
+    if (retryCount < 5) { 
         document.body.dataset.summarizeButtonRetry = (retryCount + 1).toString();
-        setTimeout(createSummarizeButton, 2000); // Increased retry delay
+        setTimeout(createSummarizeButton, 2000); 
     } else {
         console.error('YouTube Transcript Summarizer: Max retries reached for creating summarize button.');
         delete document.body.dataset.summarizeButtonRetry;
