@@ -23,4 +23,4 @@ Copies the transcript to clipboard, and opens up gpt/claude/gemini in a new tab 
 6. The transcript will be copied to the clipboard, and a new tab will open with the AI model's summarization of the transcript.
 
 ### Demo
-![Demo](https://drive.google.com/file/d/1fNqTZRDwVXawD8vAF6B5lgbbJiXczPit/view?usp=sharing)
+[Demo](https://drive.google.com/file/d/1fNqTZRDwVXawD8vAF6B5lgbbJiXczPit/view?usp=sharing)
