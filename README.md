@@ -11,7 +11,7 @@ Copies the transcript to clipboard, and opens up gpt/claude/gemini in a new tab 
 4. Run `npm run build` to compile the TypeScript code to JavaScript.
 5. Open Chrome and go to `chrome://extensions/`.
 6. Enable "Developer mode" in the top right corner.
-7. Click on "Load unpacked" and select the folder where you extracted the repository.
+7. Click on "Load unpacked" and select the dist folder which was created after running `npm run build`.
 8. The extension should now be installed and ready to use.
 
 ## Usage
