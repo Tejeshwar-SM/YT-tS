@@ -21,3 +21,6 @@ Copies the transcript to clipboard, and opens up gpt/claude/gemini in a new tab 
 4. Reload the page (only required for the first time).
 5. Click the summarize button near the video title.
 6. The transcript will be copied to the clipboard, and a new tab will open with the AI model's summarization of the transcript.
+
+### Demo
+![Demo](https://drive.google.com/file/d/1fNqTZRDwVXawD8vAF6B5lgbbJiXczPit/view?usp=sharing)
