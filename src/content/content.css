@@ -1,0 +1,208 @@
+
+.yt-summarize-button {
+  background-color: #065fd4; 
+  color: white;
+  border: none;
+  border-radius: 18px; 
+  padding: 0 16px;
+  height: 36px; 
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-left: 8px;
+  transition: background-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: none; 
+  font-family: "Roboto", "Arial", sans-serif; 
+}
+
+.yt-summarize-button:hover {
+  background-color: #0553b7;
+}
+
+
+#yt-transcript-sidebar {
+  position: fixed;
+  top: 60px;
+  right: 0;
+  width: 350px;
+  height: calc(100vh - 70px);
+  background-color: #f9f9f9;
+  border-left: 1px solid #e0e0e0;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.1);
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", "Arial", sans-serif;
+  transition: transform 0.3s ease-in-out;
+}
+
+#yt-transcript-sidebar.hidden {
+  transform: translateX(100%);
+}
+
+.yt-transcript-header {
+  padding: 12px 16px;
+  background-color: #f1f1f1;
+  border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.yt-transcript-header h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+}
+
+.yt-transcript-controls button {
+  background: none;
+  border: 1px solid #ccc;
+  color: #333;
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 13px;
+  margin-left: 8px;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.yt-transcript-controls button:hover {
+  background-color: #e0e0e0;
+  border-color: #bbb;
+}
+
+.yt-transcript-content {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 16px;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+  background-color: #fff; 
+}
+
+#yt-transcript-text {
+  white-space: pre-wrap; /* Preserve line breaks from transcript */
+  word-wrap: break-word;
+}
+
+/* --- Setup Modal --- */
+#yt-setup-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Roboto", "Arial", sans-serif;
+}
+
+.yt-setup-content {
+  background-color: #ffffff;
+  padding: 24px 30px; 
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  width: 450px; 
+  max-width: 90%;
+}
+
+.yt-setup-content h2 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 500;
+  color: #333;
+  text-align: center;
+}
+
+.yt-setup-content p {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: #555;
+  text-align: center;
+}
+
+.yt-platform-selection label {
+  display: block;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: #444;
+  cursor: pointer;
+}
+
+.yt-platform-selection input[type="radio"] {
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.yt-prompt-section {
+  margin-top: 20px;
+  margin-bottom: 24px;
+}
+
+.yt-prompt-section label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #555;
+  font-size: 14px;
+}
+
+#customPromptModal {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 14px;
+  min-height: 70px;
+  box-sizing: border-box;
+  resize: vertical;
+}
+
+.yt-prompt-section small {
+  display: block;
+  margin-top: 6px;
+  color: #777;
+  font-size: 12px;
+}
+
+.yt-setup-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.yt-setup-buttons button {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 4px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  border: 1px solid transparent;
+}
+
+#yt-setup-save {
+  background-color: #065fd4;
+}
+#yt-setup-save:hover {
+  background-color: #0553b7;
+}
+
+#yt-setup-cancel {
+  background-color: #f1f1f1;
+  color: #333;
+  border-color: #ccc;
+}
+#yt-setup-cancel:hover {
+  background-color: #e0e0e0;
+}

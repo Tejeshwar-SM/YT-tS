@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>YouTube Transcript Summarizer Settings</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="container">
+    <h1>YouTube Transcript Summarizer</h1>
+    
+    <div class="section">
+      <label for="aiPlatform">AI Platform:</label>
+      <select id="aiPlatform">
+        <option value="">Select platform...</option>
+        <option value="chatgpt">ChatGPT</option>
+        <option value="gemini">Gemini</option>
+        <option value="claude">Claude</option>
+      </select>
+    </div>
+    
+    <div class="section">
+      <label for="customPrompt">Custom Prompt:</label>
+      <textarea id="customPrompt" rows="4" placeholder="Summarize this YouTube video: [transcript]"></textarea>
+      <small>Use [transcript] where you want the video transcript to be inserted.</small>
+    </div>
+    
+    <div class="buttons">
+      <button id="saveSettings" class="primary">Save Settings</button>
+      <button id="resetSettings" class="secondary">Reset</button>
+    </div>
+    
+    <div id="status" class="status"></div>
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
